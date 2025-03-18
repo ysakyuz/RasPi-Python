@@ -5,22 +5,22 @@ from datetime import datetime
 
 def read_bme680():
     try:
-        # Varsayılan adres: 0x76 (I2C_ADDR_PRIMARY)
+        # Default address: 0x76 (I2C_ADDR_PRIMARY)
         sensor = bme680.BME680(bme680.I2C_ADDR_PRIMARY)
     except (RuntimeError, IOError) as e:
         print(f"Failed to initialize sensor: {e}")
         sys.exit(1)
 
-    # Ölçüm kalitesi için oversampling ayarları
+    # Settings for oversampling for measurement quality
     sensor.set_humidity_oversample(bme680.OS_2X)
     sensor.set_pressure_oversample(bme680.OS_4X)
     sensor.set_temperature_oversample(bme680.OS_8X)
     sensor.set_filter(bme680.FILTER_SIZE_3)
     sensor.set_gas_status(bme680.ENABLE_GAS_MEAS)
 
-    # Sensör verisi okumaya çalış
+    # Try to read sensor data
     if sensor.get_sensor_data():
-        # Geçerli saat ve dakikayı alıyoruz (ör. "14:35")
+        # We are getting the current hour and minute
         current_time = datetime.now().strftime('%H:%M')
         output = (
             f"[{current_time}] Temperature: {sensor.data.temperature:.2f} C, "
