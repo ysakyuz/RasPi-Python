@@ -4,7 +4,7 @@ This project involves reading and displaying data from an air quality sensor acc
 using a Raspberry Pi, with the help of Python. The setup of materials and preparation of the necessary 
 environment is also included, requiring approximately four hours of work. You can easily continue your 
 projects, such as displaying results on the web or integrating them into applications, using this 
-infrastructure. (readme.pdf)
+infrastructure. (ReadMe.pdf)
 
 If you have any questions, do not hesitate to contact me. 
 
